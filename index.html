@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="style.css">
     <title>I love you...</title>
     <meta charset="UTF-8">
     <style>
@@ -21,16 +22,18 @@
     </style>
 </head>
 <body>
-    <h1>I want to fill, Only when Im with you</h1>
-    <img src="https://i.ibb.co/0RSdcr54/photo-1.jpg" alt="Моя картинка">
+    <div class="header">
+        <h1>I want to fill, Only when Im with you</h1>
+    </div>
     
-    <audio controls autoplay>
-        <source src="music.mp3" type="audio/mpeg">
-        Ваш браузер не поддерживает аудио.
-    </audio>
+    <div class="photo-frame">
+        <img src="https://i.ibb.co/0RSdcr54/photo-1.jpg" alt="Моя фотография">
+    </div>
     
-    <p>I love you...</p>
-    
+    <div class="player">
+        <audio controls autoplay>
+            <source src="music.mp3" type="audio/mpeg">
+            Ваш браузер не поддерживает аудио.
+        </audio>
+    </div>
 </body>
-
-</html>
