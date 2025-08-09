@@ -1,39 +1,118 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <link rel="stylesheet" href="style.css">
-    <title>I love you...</title>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I love you...</title>
+    <link rel="stylesheet" href="style.css">
     <style>
+        /* Мобильная адаптация */
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f0f0f0;
-            padding: 20px;
+            padding: 10px;
+            box-sizing: border-box;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
         }
+        
+        .header {
+            margin: 0px 0;
+        }
+        
+        .header h1 {
+            font-size: 2rem;
+            line-height: 1.3;
+            padding: 0 10px;
+        }
+        
         img {
-            border-radius: 10px;
-            max-width: 80%;
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 15px;
+            object-fit: cover;
+            animation: pulse 5s ease infinite;
+            box-shadow: 0 0 15px rgba(255, 120, 120, 0.5);
+            display: block;
+            margin: 0;
         }
+        
+        .photo-container {
+            margin: 50px auto;
+            max-width: 300px;
+        }
+        
+        .player {
+            margin: 0px;
+            width: 90%;
+            max-width: 300px;
+            height: auto;
+            padding: 30px 20px;
+            clip-path: none;
+            border-radius: 20px;
+            animation: heartbeat 1.5s ease infinite;
+        }
+        
         audio {
-            margin: 20px auto;
-            width: 80%;
+            width: 100%;
+            max-width: 280px;
+            filter: drop-shadow(0 0 5px rgba(255, 100, 100, 0.5));
+        }
+        
+        audio::-webkit-media-controls-panel {
+            background-color: #ff8e8e;
+            border-radius: 15px;
+        }
+        
+        /* Адаптация декоративных элементов */
+        .heart-decoration {
+            font-size: 0.8rem;
         }
     </style>
 </head>
 <body>
+    <!-- Декоративные элементы -->
+    <div class="heart-decoration">♥</div>
+    <div class="heart-decoration">♥</div>
+    <div class="heart-decoration">♥</div>
+    
     <div class="header">
-        <h1>I want to fill, Only when Im with you</h1>
+        <h1>I want to feel, Only when I'm with you...</h1>
     </div>
     
-    <div class="photo-frame">
-        <img src="https://i.ibb.co/0RSdcr54/photo-1.jpg" alt="Моя фотография">
+    <div class="photo-container">
+        <img src="https://i.ibb.co/0RSdcr54/photo-1.jpg" alt="Our Special Moment">
     </div>
     
     <div class="player">
-        <audio controls autoplay>
+        <audio controls autoplay loop>
             <source src="music.mp3" type="audio/mpeg">
-            Ваш браузер не поддерживает аудио.
+            Your browser does not support the audio element.
         </audio>
     </div>
+    
+    <script>
+        // Оптимизированный скрипт для мобильных устройств
+        document.addEventListener('DOMContentLoaded', function() {
+            const colors = ['#ff6b6b', '#ff8e8e', '#ffb0b0', '#ffd3d3'];
+            const heartCount = window.innerWidth < 768 ? 5 : 8;
+            
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart-decoration';
+                heart.innerHTML = '♥';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.top = Math.random() * 100 + '%';
+                heart.style.fontSize = (Math.random() * 0.8 + 0.4) + 'rem';
+                heart.style.animationDelay = Math.random() * 3 + 's';
+                heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+                heart.style.position = 'fixed';
+                heart.style.pointerEvents = 'none';
+                heart.style.zIndex = '-1';
+                document.body.appendChild(heart);
+            }
+        });
+    </script>
 </body>
+</html>
